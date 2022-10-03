@@ -1,0 +1,5 @@
+app:
+  hello:
+    dyn:
+      prefix: Hello
+    language: eng

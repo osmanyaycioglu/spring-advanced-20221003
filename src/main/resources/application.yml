@@ -1,0 +1,60 @@
+app:
+  hello:
+    dyn:
+      prefix: Hi
+    language: tr
+  prop:
+    app-desc: development training
+    app-version: 1.0.0
+    cities:
+    - ankara
+    - istanbul
+    - antalya
+    customer-map:
+      mehmeta:
+        height: 180
+        name: mehmet
+        surname: alan
+        weight: 90
+      osmany:
+        height: 198
+        name: osman
+        surname: yay
+        weight: 90
+    customers:
+    - height: 180
+      name: ali
+      surname: veli
+      weight: 98
+    - height: 160
+      name: ayşe
+      surname: alan
+      weight: 50
+    - name: xyz
+      surname: kkk
+      height: 100
+      weight: 100
+    default-customer:
+      height: 200
+      surname: yay
+      weight: 95
+      name: osman
+    hello-language: tr
+    port: 10000
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+server:
+  port: 8080
+  error:
+    include-binding-errors: always
+    include-exception: true
+    include-message: always
+hello:
+  dyn:
+    create: 'test'
+spring:
+  profiles:
+    default: dinamik

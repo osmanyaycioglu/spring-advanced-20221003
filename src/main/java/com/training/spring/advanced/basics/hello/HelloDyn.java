@@ -1,5 +1,6 @@
 package com.training.spring.advanced.basics.hello;
 
+import com.training.spring.advanced.conditional.PropertyCheck;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -14,7 +15,7 @@ public class HelloDyn implements IHello{
     }
 
     @Override
-    public String hello(String name) {
+    public String hello( String name) {
         return prefix + " " + name;
     }
 }

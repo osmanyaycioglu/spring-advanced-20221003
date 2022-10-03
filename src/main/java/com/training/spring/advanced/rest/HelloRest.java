@@ -9,8 +9,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+
 @RestController
 @RequestMapping("/greetings")
+@Valid
 public class HelloRest {
 
     @Autowired
@@ -19,8 +23,8 @@ public class HelloRest {
 
     @GetMapping("/hello")
     @Operation(summary = "greet to new customer",description = "herkese selam gönderen yapı")
-    public String hello(@RequestParam("isim") String name,
-                        @RequestParam("soy") String surname) {
+    public String hello(@NotEmpty @RequestParam("isim") String name,
+                        @NotEmpty @RequestParam("soy") String surname) {
         return hello.hello(name + " " + surname);
     }
 
@@ -31,7 +35,7 @@ public class HelloRest {
     }
 
     @PostMapping("/hello3")
-    public String hello3(@RequestBody Customer customer) {
+    public String hello3(@Valid @RequestBody Customer customer) {
         return hello.hello(customer.getName() + " " + customer.getSurname());
     }
 

@@ -8,37 +8,27 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+import java.security.SecureRandom;
+import java.util.Random;
+
 @Configuration
-@Profile("dinamik")
-public class HelloConfiguration {
+@Profile("random")
+public class HelloConfigurationRandom {
 
 
     @Bean
     public IHello helloDinamik(ApplicationProp applicationProp) {
-        switch (applicationProp.getHelloLanguage()) {
-            case "tr":
+        Random random = new SecureRandom();
+        int index = random.nextInt(3);
+        switch (index) {
+            case 0:
                 return new HelloTr();
-            case "esp":
+            case 1:
                 return new HelloEsp();
-            case "eng":
+            case 2:
             default:
                 return new HelloEng();
         }
     }
-
-    @Bean
-    @PropertyCheck(propertyName = "hello.dyn.create")
-    public IHello helloDinamik2(@Value("${app.hello.language}") String language) {
-        switch (language) {
-            case "tr":
-                return new HelloTr();
-            case "esp":
-                return new HelloEsp();
-            case "eng":
-            default:
-                return new HelloEng();
-        }
-    }
-
 
 }
