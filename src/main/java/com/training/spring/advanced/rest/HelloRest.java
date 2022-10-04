@@ -36,6 +36,9 @@ public class HelloRest {
 
     @PostMapping("/hello3")
     public String hello3(@Valid @RequestBody Customer customer) {
+        if (customer.getName().startsWith("123")){
+            throw new IllegalArgumentException("password 123 ile başlayamaz");
+        }
         return hello.hello(customer.getName() + " " + customer.getSurname());
     }
 

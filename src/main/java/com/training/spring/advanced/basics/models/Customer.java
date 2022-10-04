@@ -1,7 +1,10 @@
 package com.training.spring.advanced.basics.models;
 
+import com.training.spring.advanced.validation.NotStartWith;
+
 import javax.validation.constraints.*;
 
+@NotStartWith({"test","dev"})
 public class Customer {
     @NotEmpty(message = "name boş olamaz")
     @Size(min = 2,max = 15,message = "name {min} ile {max} arasında olmalı")
@@ -16,6 +19,9 @@ public class Customer {
     @Min(50)
     @Max(250)
     private Integer height;
+    @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$")
+    @NotStartWith({"12345","fb","gs","xyz"})
+    private String password;
 
     public String getName() {
         return name;
@@ -57,5 +63,13 @@ public class Customer {
                 ", weight=" + weight +
                 ", height=" + height +
                 '}';
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
