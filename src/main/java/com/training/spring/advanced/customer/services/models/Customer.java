@@ -1,27 +1,19 @@
-package com.training.spring.advanced.basics.models;
+package com.training.spring.advanced.customer.services.models;
 
 import com.training.spring.advanced.validation.NotStartWith;
 
 import javax.validation.constraints.*;
+import java.util.List;
 
-@NotStartWith({"test","dev"})
 public class Customer {
-    @NotEmpty(message = "name boş olamaz")
-    @Size(min = 2,max = 15,message = "name {min} ile {max} arasında olmalı")
     private String name;
-    @NotEmpty(message = "surname boş olamaz")
-    @Size(min = 3,max = 20,message = "surname {min} ile {max} arasında olmalı")
     private String  surname;
-    @Positive
-    @Min(20)
-    @Max(300)
     private Integer weight;
-    @Min(50)
-    @Max(250)
     private Integer height;
-    @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$")
-    @NotStartWith({"12345","fb","gs","xyz"})
     private String password;
+    private EStatus customerState;
+    private Address address;
+    private List<Phone> phoneList;
 
     public String getName() {
         return name;
@@ -55,21 +47,35 @@ public class Customer {
         this.height = height;
     }
 
-    @Override
-    public String toString() {
-        return "Customer{" +
-                "name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", weight=" + weight +
-                ", height=" + height +
-                '}';
-    }
-
     public String getPassword() {
         return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public EStatus getCustomerState() {
+        return customerState;
+    }
+
+    public void setCustomerState(EStatus customerState) {
+        this.customerState = customerState;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public List<Phone> getPhoneList() {
+        return phoneList;
+    }
+
+    public void setPhoneList(List<Phone> phoneList) {
+        this.phoneList = phoneList;
     }
 }

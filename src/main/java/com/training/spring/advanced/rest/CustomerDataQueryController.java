@@ -1,6 +1,9 @@
 package com.training.spring.advanced.rest;
 
-import com.training.spring.advanced.basics.models.Customer;
+import com.training.spring.advanced.customer.services.CustomerDataService;
+import com.training.spring.advanced.rest.mappers.ICustomerMapper;
+import com.training.spring.advanced.rest.models.CustomerRest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -9,19 +12,22 @@ import java.util.List;
 @RequestMapping("/api/v1/customer/data/query")
 public class CustomerDataQueryController {
 
+    @Autowired
+    private CustomerDataService customerDataService;
+
     @GetMapping("/get/one")
-    public Customer getOneCustomer(@RequestParam("cid") Long customerId) {
-        return null;
+    public CustomerRest getOneCustomer(@RequestParam("cid") Long customerId) {
+        return ICustomerMapper.MAPPER.toCustomerRest(customerDataService.getOneCustomer(customerId));
     }
 
     @GetMapping("/get/all")
-    public List<Customer> getAllCustomers() {
-        return null;
+    public List<CustomerRest> getAllCustomers() {
+        return ICustomerMapper.MAPPER.toCustomerRestList(customerDataService.getAllCustomers());
     }
 
     @GetMapping("/get/by/surname")
-    public List<Customer> getCustomersBySurname(@RequestParam("surnamae") String surname) {
-        return null;
+    public List<CustomerRest> getCustomersBySurname(@RequestParam("surnamae") String surname) {
+        return ICustomerMapper.MAPPER.toCustomerRestList(customerDataService.getCustomersBySurname(surname));
     }
 
 }

@@ -1,13 +1,11 @@
 package com.training.spring.advanced.rest;
 
 import com.training.spring.advanced.basics.hello.IHello;
-import com.training.spring.advanced.basics.models.Customer;
+import com.training.spring.advanced.rest.models.CustomerRest;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
@@ -35,11 +33,11 @@ public class HelloRest {
     }
 
     @PostMapping("/hello3")
-    public String hello3(@Valid @RequestBody Customer customer) {
-        if (customer.getName().startsWith("123")){
+    public String hello3(@Valid @RequestBody CustomerRest customerRest) {
+        if (customerRest.getName().startsWith("123")){
             throw new IllegalArgumentException("password 123 ile başlayamaz");
         }
-        return hello.hello(customer.getName() + " " + customer.getSurname());
+        return hello.hello(customerRest.getName() + " " + customerRest.getSurname());
     }
 
 }

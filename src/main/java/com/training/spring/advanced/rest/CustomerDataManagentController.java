@@ -1,6 +1,6 @@
 package com.training.spring.advanced.rest;
 
-import com.training.spring.advanced.basics.models.Customer;
+import com.training.spring.advanced.rest.models.CustomerRest;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 public class CustomerDataManagentController {
 
     @PostMapping("/update")
-    public String update(Customer customer){
+    public String update(CustomerRest customerRest){
        return "OK";
     }
 

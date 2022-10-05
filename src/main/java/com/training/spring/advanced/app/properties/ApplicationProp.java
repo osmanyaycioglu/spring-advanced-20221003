@@ -1,6 +1,6 @@
 package com.training.spring.advanced.app.properties;
 
-import com.training.spring.advanced.basics.models.Customer;
+import com.training.spring.advanced.rest.models.CustomerRest;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
@@ -13,11 +13,11 @@ public class ApplicationProp {
     private String helloLanguage = "eng";
     private String appDesc = "test app";
     private Integer port;
-    private String appVersion;
-    private Customer defaultCustomer;
-    private List<String> cities;
-    private List<Customer> customers;
-    private Map<String,Customer> customerMap;
+    private String                    appVersion;
+    private CustomerRest              defaultCustomerRest;
+    private List<String>              cities;
+    private List<CustomerRest>        customerRests;
+    private Map<String, CustomerRest> customerMap;
 
     public String getHelloLanguage() {
         return helloLanguage;
@@ -51,12 +51,12 @@ public class ApplicationProp {
         this.appVersion = appVersion;
     }
 
-    public Customer getDefaultCustomer() {
-        return defaultCustomer;
+    public CustomerRest getDefaultCustomer() {
+        return defaultCustomerRest;
     }
 
-    public void setDefaultCustomer(Customer defaultCustomer) {
-        this.defaultCustomer = defaultCustomer;
+    public void setDefaultCustomer(CustomerRest defaultCustomerRest) {
+        this.defaultCustomerRest = defaultCustomerRest;
     }
 
     @Override
@@ -66,7 +66,7 @@ public class ApplicationProp {
                 ", appDesc='" + appDesc + '\'' +
                 ", port=" + port +
                 ", appVersion='" + appVersion + '\'' +
-                ", defaultCustomer=" + defaultCustomer +
+                ", defaultCustomer=" + defaultCustomerRest +
                 '}';
     }
 
@@ -78,19 +78,19 @@ public class ApplicationProp {
         this.cities = cities;
     }
 
-    public List<Customer> getCustomers() {
-        return customers;
+    public List<CustomerRest> getCustomers() {
+        return customerRests;
     }
 
-    public void setCustomers(List<Customer> customers) {
-        this.customers = customers;
+    public void setCustomers(List<CustomerRest> customerRests) {
+        this.customerRests = customerRests;
     }
 
-    public Map<String, Customer> getCustomerMap() {
+    public Map<String, CustomerRest> getCustomerMap() {
         return customerMap;
     }
 
-    public void setCustomerMap(Map<String, Customer> customerMap) {
+    public void setCustomerMap(Map<String, CustomerRest> customerMap) {
         this.customerMap = customerMap;
     }
 }
