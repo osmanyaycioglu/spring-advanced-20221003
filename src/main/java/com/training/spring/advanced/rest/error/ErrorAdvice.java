@@ -56,6 +56,7 @@ public class ErrorAdvice {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorObj> handle(Exception exception) {
+        exception.printStackTrace();
         if (exception instanceof NullPointerException) {
             return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED)
                                  .header("xyz",

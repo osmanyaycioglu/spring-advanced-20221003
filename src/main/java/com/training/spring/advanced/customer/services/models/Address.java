@@ -1,7 +1,14 @@
 package com.training.spring.advanced.customer.services.models;
 
-public class Address {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
+@Entity
+public class Address {
+    @Id
+    @GeneratedValue
+    private Long addId;
     private String city;
     private String street;
 

@@ -1,7 +1,14 @@
 package com.training.spring.advanced.customer.services.models;
 
-public class Phone {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
+@Entity
+public class Phone {
+    @Id
+    @GeneratedValue
+    private Long phoneId;
     private String name;
     private String phoneNumber;
 
