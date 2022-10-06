@@ -7,6 +7,7 @@ public class MyOriginalObjProxy extends MyOriginalObj {
         System.out.println("trans start");
         String walk = null;
         try {
+            // Given code part call
             walk = super.walk(name);
             System.out.println("trans commit");
 

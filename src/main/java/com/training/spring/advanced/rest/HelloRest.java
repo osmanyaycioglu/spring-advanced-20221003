@@ -1,5 +1,6 @@
 package com.training.spring.advanced.rest;
 
+import com.training.spring.advanced.aop.MyGreetBean;
 import com.training.spring.advanced.basics.hello.IHello;
 import com.training.spring.advanced.rest.models.CustomerRest;
 import io.swagger.v3.oas.annotations.Operation;
@@ -11,13 +12,21 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 
 @RestController
-@RequestMapping("/greetings")
+    @RequestMapping("/greetings")
 @Valid
 public class HelloRest {
 
     @Autowired
     @Qualifier("helloDinamik")
     private IHello hello;
+
+    @Autowired
+    private MyGreetBean myGreetBean;
+
+    @GetMapping("/greet")
+   public String greet(@NotEmpty @RequestParam("isim") String name) {
+        return myGreetBean.callMe(name);
+    }
 
     @GetMapping("/hello")
     @Operation(summary = "greet to new customer",description = "herkese selam gönderen yapı")

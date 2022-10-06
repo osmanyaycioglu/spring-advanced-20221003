@@ -61,7 +61,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/innova?currentSchema=training
     username: postgres
-    password: 123456
+    password: ENC(EUw0MchCbkDi5/cK2d425gZ/tqIA6pWRhZ0UBIjb6G7jIkdrUAzdwLaIEA7IsEvO)
     driver-class-name: org.postgresql.Driver
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQL95Dialect
@@ -71,3 +71,10 @@ spring:
       hibernate:
         format_sql: true
         show_sql: true
+  task:
+    scheduling:
+      pool:
+        size: 5
+osman:
+  schedule:
+    timeout: 10000
