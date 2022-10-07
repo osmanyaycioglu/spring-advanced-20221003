@@ -75,6 +75,10 @@ spring:
     scheduling:
       pool:
         size: 5
+  security:
+    user:
+      name: osman
+      password: 123456
 osman:
   schedule:
     timeout: 10000

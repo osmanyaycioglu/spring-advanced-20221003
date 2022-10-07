@@ -1,9 +1,11 @@
 package com.training.spring.advanced.rest;
 
+import com.training.spring.advanced.aop.LogMe;
 import com.training.spring.advanced.customer.services.CustomerProvisionService;
 import com.training.spring.advanced.rest.mappers.ICustomerMapper;
 import com.training.spring.advanced.rest.models.CustomerRest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -16,6 +18,8 @@ public class CustomerProvisionController {
     private CustomerProvisionService customerProvisionService;
 
     @PostMapping("/add")
+    @LogMe(logLevel = 4,prefix = "Rest Controller")
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public String add(@Valid @RequestBody CustomerRest customerRest) {
         customerProvisionService.addCustomer(ICustomerMapper.MAPPER.toCustomer(customerRest));
         return "OK";

@@ -1,5 +1,6 @@
 package com.training.spring.advanced.customer.data;
 
+import com.training.spring.advanced.aop.LogMe;
 import com.training.spring.advanced.customer.services.models.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,7 @@ public class CustomerData {
     private ICustomerDao customerDao;
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @LogMe(logLevel = 4,prefix = "Rest Controller")
     public Long insertCustomer(Customer customer) {
         Customer savedCustomer = customerDao.save(customer);
         return savedCustomer.getCustomerId();

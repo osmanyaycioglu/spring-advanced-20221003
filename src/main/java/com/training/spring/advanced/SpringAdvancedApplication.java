@@ -10,12 +10,17 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.Import;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.security.config.annotation.authentication.configuration.EnableGlobalAuthentication;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
 //@SpringBootApplication(scanBasePackages = {"com.training.spring.advanced","a.b.c"})
 @SpringBootApplication
 @Import(HelloConfig.class)
 @EnableAspectJAutoProxy
 @EnableScheduling
+@EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SpringAdvancedApplication {
 
     @Autowired

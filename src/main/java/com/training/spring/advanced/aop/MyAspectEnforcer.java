@@ -59,5 +59,27 @@ public class MyAspectEnforcer {
         return null;
     }
 
+    @Around("@annotation(logMe)")
+    public Object aroundMethod(ProceedingJoinPoint proceedingJoinPoint,
+                               LogMe logMe) {
+        try {
+            Object[] args = proceedingJoinPoint.getArgs();
+            StringBuilder stringBuilder = new StringBuilder(30);
+            if (args != null) {
+                for (Object o : args) {
+                    stringBuilder.append("p:")
+                                 .append(o)
+                                 .append(",");
+                }
+            }
+            if (logMe.logLevel() > 3) {
+                System.out.println("LogMe : " + logMe.prefix() + " " + proceedingJoinPoint.toShortString() + " " + stringBuilder);
+            }
+            return proceedingJoinPoint.proceed();
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
 }
